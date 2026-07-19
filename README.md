@@ -6,7 +6,7 @@
 > 不做判断。好坏你自己定。
 
 <p align="center">
-  <a href="demo/index.html"><strong>🖥️ 在线 Demo</strong></a>
+  <a href="https://brigettecarmen60-commits.github.io/gem1-traffic-factory/"><strong>🖥️ 在线 Demo</strong></a>
 </p>
 
 ---
