@@ -8,7 +8,6 @@
   --accent: #f78166;
   --accent-dim: rgba(247, 129, 102, 0.12);
   --green: #3fb950;
-  --yellow: #d2991d;
   --blue: #58a6ff;
 }
 
@@ -38,7 +37,7 @@ body {
   padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; margin-left: 12px;
 }
 
-.container { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
+.container { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
 
 .selector { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
 .selector button {
@@ -64,7 +63,7 @@ body {
   border-radius: 8px; font-size: 14px; font-weight: 600;
 }
 
-.cards-grid { display: flex; flex-direction: column; gap: 24px; margin-bottom: 48px; }
+.cards-grid { display: flex; flex-direction: column; gap: 28px; margin-bottom: 48px; }
 
 .topic-card {
   background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
@@ -78,22 +77,28 @@ body {
 }
 
 .card-title {
-  font-size: 18px; font-weight: 700; margin-bottom: 16px; line-height: 1.4;
-  color: var(--text); padding: 12px 16px; background: var(--bg); border-radius: 8px;
+  font-size: 18px; font-weight: 700; margin-bottom: 20px; line-height: 1.4;
+  color: var(--text); padding: 14px 16px; background: var(--bg); border-radius: 8px;
   border-left: 3px solid var(--accent);
 }
 
-.alts { margin-bottom: 12px; }
+.section-label {
+  font-size: 11px; color: var(--text-muted); text-transform: uppercase;
+  letter-spacing: 1px; margin-bottom: 8px; font-weight: 600;
+}
+
+.alts { margin-bottom: 16px; }
 .alt-item {
-  font-size: 14px; color: var(--text-muted); padding: 6px 0 6px 4px;
+  font-size: 14px; color: var(--text-muted); padding: 5px 0 5px 4px;
   line-height: 1.5; transition: color 0.15s;
 }
 .alt-item:hover { color: var(--text); }
 
-.bridge {
-  font-size: 13px; color: var(--green); margin-top: 8px;
-  padding: 8px 12px; background: rgba(63, 185, 80, 0.06);
-  border-radius: 6px; border-left: 3px solid var(--green);
+.shoots { }
+.shoot-item {
+  font-size: 14px; color: var(--blue); padding: 4px 0 4px 4px;
+  line-height: 1.5; background: rgba(88, 166, 255, 0.04);
+  border-radius: 4px; margin-bottom: 2px;
 }
 
 .footer-cta {

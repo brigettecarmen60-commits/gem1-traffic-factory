@@ -29,7 +29,7 @@
     <span class="prompt-label">💬 赛道</span>
     <span class="input-display" id="inputDisplay"></span>
     <span class="arrow">→</span>
-    <span class="output-count">方向 × 备选 × 桥段</span>
+    <span class="output-count">方向 × 备选方向 × 拍摄方向</span>
   </div>
 
   <div class="cards-grid fade-in" id="cardsGrid"></div>
@@ -55,10 +55,14 @@ function renderCards() {
     <div class="topic-card" style="animation-delay: ${i * 0.07}s">
       <div class="card-code">${t.code}</div>
       <div class="card-title">${t.title}</div>
+      <div class="section-label">↳ 备选方向</div>
       <div class="alts">
-        ${t.alts.map(a => `<div class="alt-item">↳ ${a}</div>`).join('')}
+        ${t.alts.map(a => `<div class="alt-item">${a}</div>`).join('')}
       </div>
-      <div class="bridge">→ ${t.bridge}</div>
+      <div class="section-label">→ 拍摄方向</div>
+      <div class="shoots">
+        ${t.shoots.map(s => `<div class="shoot-item">${s}</div>`).join('')}
+      </div>
     </div>
   `).join('');
 
