@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gem1 流量工厂 — 一句话生成10条爆款选题</title>
+<title>Gem1 流量工厂 — 关键词×代码×流量词 乘法引擎</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,162 +11,74 @@
 <div class="header">
   <div>
     <h1>🎰 Gem1 流量工厂</h1>
-    <span class="subtitle">结构化荒诞版 · Mode B</span>
+    <span class="subtitle">乘法引擎：行业关键词 × 选题代码 × 流量词</span>
     <span class="badge">Demo</span>
   </div>
-  <div class="subtitle">老D商业IP操盘系统 — 流量选题引擎</div>
+  <div class="subtitle">老D商业IP操盘系统 — 流量型选题引擎</div>
 </div>
 
 <div class="container">
 
-  <!-- Industry Selector -->
   <div class="selector" id="selector">
-    <button class="active" data-key="quwudingzhi">🏠 全屋定制</button>
-    <button data-key="jianzhican">🥗 减脂餐</button>
-    <button data-key="chongwuyongpin">🐱 宠物用品</button>
+    <button class="active" data-key="huagong">🧪 化工原材料</button>
+    <button data-key="youting">🛥️ 游艇托管</button>
+    <button data-key="chuchen">🏭 工业除尘</button>
   </div>
 
-  <!-- Input Display -->
   <div class="input-section">
-    <span class="prompt-label">💬 用户输入</span>
-    <span class="input-display" id="inputDisplay">"我是做柜子的。"</span>
+    <span class="prompt-label">💬 赛道</span>
+    <span class="input-display" id="inputDisplay"></span>
     <span class="arrow">→</span>
-    <span class="output-count" id="outputCount">10 条选题</span>
+    <span class="output-count">方向 × 备选 × 桥段</span>
   </div>
 
-  <!-- Topic Cards Grid -->
   <div class="cards-grid fade-in" id="cardsGrid"></div>
 
-  <!-- Full Cases -->
-  <div class="full-cases">
-    <h2>完整案例展示</h2>
-    <p class="subtitle">每个赛道精选3条选题，展示 Gem1 的输出深度。</p>
-    <div class="case-tabs" id="caseTabs"></div>
-    <div class="case-content fade-in" id="caseContent"></div>
-  </div>
-
-  <!-- CTA -->
   <div class="footer-cta">
-    <h2>不想自己装 Claude Code 跑管线？</h2>
-    <p>网页版一键出结果。输入赛道 → 自动跑完五步管线 → 输出能直接拍的选题卡。</p>
+    <h2>不想自己装 Claude Code？</h2>
+    <p>网页版一键跑管线。输入赛道 → 自动出方向。</p>
     <a href="https://你的网页分身地址" class="cta-button" target="_blank">🚀 试试网页版</a>
-    <span class="cta-secondary">开源版永远免费 · 网页版提供一键全链路 + 项目存档 + 团队协作</span>
+    <span class="cta-secondary">开源版永远免费 · 网页版提供一键全链路</span>
   </div>
 
 </div>
 
 <script src="demo-data.js"></script>
 <script>
-// State
-let currentIndustry = 'quwudingzhi';
+let currentIndustry = 'huagong';
 
-// Render topic cards
 function renderCards() {
   const data = demoTopics[currentIndustry];
   const grid = document.getElementById('cardsGrid');
-  const topics = data.topics;
 
-  grid.innerHTML = topics.map((t, i) => `
-    <div class="topic-card" style="animation-delay: ${i * 0.05}s">
-      <div class="card-number">选题 ${String(i + 1).padStart(2, '0')}</div>
+  grid.innerHTML = data.topics.map((t, i) => `
+    <div class="topic-card" style="animation-delay: ${i * 0.07}s">
+      <div class="card-code">${t.code}</div>
       <div class="card-title">${t.title}</div>
-      <div class="card-field">
-        <div class="card-field-label">🎥 第一帧</div>
-        <div class="card-field-value">${t.firstFrame}</div>
+      <div class="alts">
+        ${t.alts.map(a => `<div class="alt-item">↳ ${a}</div>`).join('')}
       </div>
-      <div class="card-field">
-        <div class="card-field-label">⚡ 核心动作</div>
-        <div class="card-field-value">${t.action}</div>
-      </div>
-      <div class="card-field">
-        <div class="card-field-label">💬 钩子台词</div>
-        <div class="card-field-value hook-text">${t.hook}</div>
-      </div>
-      <div class="card-field">
-        <div class="pitfall-text">⚠️ ${t.pitfall}</div>
-      </div>
+      <div class="bridge">→ ${t.bridge}</div>
     </div>
   `).join('');
 
-  document.getElementById('inputDisplay').textContent = `"${data.input}"`;
-  document.getElementById('outputCount').textContent = `${topics.length} 条选题`;
+  document.getElementById('inputDisplay').textContent = data.input;
 }
 
-// Render case tabs
-function renderCaseTabs() {
-  const tabs = document.getElementById('caseTabs');
-  tabs.innerHTML = industries.map(ind => `
-    <button class="${ind.key === currentIndustry ? 'active' : ''}" data-key="${ind.key}">
-      ${ind.label}
-    </button>
-  `).join('');
-  renderCaseContent();
-}
-
-// Render case content
-function renderCaseContent() {
-  const data = demoTopics[currentIndustry];
-  const content = document.getElementById('caseContent');
-  content.innerHTML = `
-    <h3>${data.name}赛道 · 完整选题列表</h3>
-    <ul>
-      ${data.topics.map((t, i) => `<li><strong>选题${i + 1}：</strong>${t.title}</li>`).join('')}
-    </ul>
-    <p style="margin-top:16px;color:var(--text-muted);font-size:13px;">
-      📖 查看完整 10 条选题详情 → <a href="../output-examples/${currentIndustry === 'quwudingzhi' ? 'quwudingzhi' : currentIndustry === 'jianzhican' ? 'jianzhican' : 'chongwuyongpin'}.md" style="color:var(--accent);">GitHub 上的完整输出</a>
-    </p>
-  `;
-}
-
-// Event: Industry selector
 document.getElementById('selector').addEventListener('click', (e) => {
   if (e.target.tagName !== 'BUTTON') return;
   const key = e.target.dataset.key;
   if (!key || key === currentIndustry) return;
-
   currentIndustry = key;
-
-  // Update selector buttons
   document.querySelectorAll('#selector button').forEach(b => b.classList.remove('active'));
   e.target.classList.add('active');
-
-  // Re-render
   document.getElementById('cardsGrid').classList.remove('fade-in');
   void document.getElementById('cardsGrid').offsetWidth;
   document.getElementById('cardsGrid').classList.add('fade-in');
-
   renderCards();
-  renderCaseTabs();
 });
 
-// Event: Case tabs
-document.getElementById('caseTabs').addEventListener('click', (e) => {
-  if (e.target.tagName !== 'BUTTON') return;
-  const key = e.target.dataset.key;
-  if (!key || key === currentIndustry) return;
-
-  currentIndustry = key;
-
-  // Update both selectors
-  document.querySelectorAll('#selector button').forEach(b => {
-    b.classList.toggle('active', b.dataset.key === key);
-  });
-  document.querySelectorAll('#caseTabs button').forEach(b => {
-    b.classList.toggle('active', b.dataset.key === key);
-  });
-
-  // Re-render
-  document.getElementById('cardsGrid').classList.remove('fade-in');
-  void document.getElementById('cardsGrid').offsetWidth;
-  document.getElementById('cardsGrid').classList.add('fade-in');
-
-  renderCards();
-  renderCaseContent();
-});
-
-// Init
 renderCards();
-renderCaseTabs();
 </script>
 
 </body>
