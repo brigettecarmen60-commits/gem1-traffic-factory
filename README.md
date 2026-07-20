@@ -6,7 +6,7 @@
 > 不做判断。好坏你自己定。
 
 <p align="center">
-  <a href="https://brigettecarmen60-commits.github.io/gem1-traffic-factory/"><strong>🖥️ 在线 Demo</strong></a>
+  <a href="https://brigettecarmen60-commits.github.io/gem1-traffic-factory/"><strong>🖥️ 在线 Demo</strong></a> · <a href="https://laod123.xyz"><strong>🌐 网页版：laod123.xyz</strong></a>
 </p>
 
 ---
@@ -73,7 +73,7 @@ Claude Code 里说：
 
 ## 网页版
 
-不想装 Claude Code？→ [D-System Web](https://你的网页分身地址)：输入赛道，一键跑。试用版 ¥39.9。
+不想装 Claude Code？→ [laod123.xyz](https://laod123.xyz)：输入赛道，一键跑。试用版 ¥39.9。
 
 ---
 
